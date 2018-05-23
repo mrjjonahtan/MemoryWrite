@@ -52,14 +52,14 @@ DWORD PeToolsClass::getDWValue(BYTE *pointerValue, int number)
 //	revalue = getDWValue((pointerValue + getPELocation(pointerValue) + 4 + 16), 2);
 //	return revalue;
 //}
-//
-//DWORD PeToolsClass::getPELocation(BYTE *pointerValue)
-//{
-//	DWORD revalue = 0;
-//	revalue = getDWValue((pointerValue + 60), 4);
-//	return revalue;
-//}
-//
+
+DWORD PeToolsClass::getPELocation(BYTE *pointerValue)
+{
+	DWORD revalue = 0;
+	revalue = getDWValue((pointerValue + 60), 4);
+	return revalue;
+}
+
 //DWORD PeToolsClass::getSectionNumber(BYTE *pointerValue)
 //{
 //	DWORD revalue = 0;
@@ -67,24 +67,24 @@ DWORD PeToolsClass::getDWValue(BYTE *pointerValue, int number)
 //	return revalue;
 //}
 //
-//void PeToolsClass::getCharPointer(BYTE *pointerValue, TCHAR *tvlue, int max)
-//{
-//	if (max == 0)
-//	{
-//		for (int i = 0; pointerValue[i] != 0; i++)
-//		{
-//			tvlue[i] = pointerValue[i];
-//		}
-//	}
-//	else
-//	{
-//		for (int i = 0; pointerValue[i] != 0 && i < max; i++)
-//		{
-//			tvlue[i] = pointerValue[i];
-//		}
-//	}
-//
-//}
+void PeToolsClass::getCharPointer(BYTE *pointerValue, TCHAR *tvlue, int max)
+{
+	if (max == 0)
+	{
+		for (int i = 0; pointerValue[i] != 0; i++)
+		{
+			tvlue[i] = pointerValue[i];
+		}
+	}
+	else
+	{
+		for (int i = 0; pointerValue[i] != 0 && i < max; i++)
+		{
+			tvlue[i] = pointerValue[i];
+		}
+	}
+
+}
 //
 //DWORD PeToolsClass::rvaTofoa(BYTE *pointerValue, DWORD RVA)
 //{
@@ -182,13 +182,13 @@ DWORD PeToolsClass::getDWValue(BYTE *pointerValue, int number)
 //	}
 //	return revalue;
 //}
-//
-//DWORD PeToolsClass::getApplicationSize(BYTE *pointerValue)
-//{
-//	DWORD pelocat = getPELocation(pointerValue);
-//	DWORD reValue = getDWValue((pointerValue + pelocat + 4), 2);
-//	return reValue;
-//}
+
+DWORD PeToolsClass::getApplicationSize(BYTE *pointerValue)
+{
+	DWORD pelocat = getPELocation(pointerValue);
+	DWORD reValue = getDWValue((pointerValue + pelocat + 4), 2);
+	return reValue;
+}
 
 void PeToolsClass::putData(BYTE *pointer, DWORD value, DWORD number)
 {
